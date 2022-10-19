@@ -1,24 +1,66 @@
-const setPin = 4096; //user pin is set to 4096
-
+const wrapper = document.querySelector(".wrapper");
+const setPinDiv = document.querySelector(".set-pin-div");
 const inputPin = document.getElementById("input-pin");
 const checkBalanceBtn = document.getElementById("check-balance-btn");
 const withdrawCashBtn = document.getElementById("withdraw-cash-btn");
 const displayMessage = document.getElementById('display-message');
 const amountInput = document.querySelector('.amount-input');
 const cashOut = document.querySelector('.cash-out');
-
+const setPin = document.querySelector(".set-pin");
+const confirmPin = document.querySelector(".confirm-pin");
+const setPinBtn = document.querySelector(".set-pin-btn");
+let pin;
 let bankBalance = 85000;
 let correctPin = false;
 
 
 // To only get number input as input pin
-function onlyNumbers() {
-    if(isNaN(inputPin.value)|| isNaN(amountInput.value)) {
+// function onlyNumbers(inputOne, inputTwo) {
+//     if(isNaN(inputPin.value)|| isNaN(amountInput.value)) {
+//         alert('Please enter numbers only!');
+//         inputPin.value = '';
+//         amountInput.value = '';
+//     }
+// }
+
+function onlyNumbers(input) {
+    if(isNaN(input.value)) {
         alert('Please enter numbers only!');
-        inputPin.value = '';
-        amountInput.value = '';
+        input.value = '';
     }
 }
+
+inputPin.addEventListener("keyup", () => {
+    onlyNumbers(inputPin);
+});
+
+amountInput.addEventListener("keyup", () => {
+    onlyNumbers(amountInput);
+});
+
+setPin.addEventListener("keyup", () => {
+    onlyNumbers(setPin);
+});
+
+confirmPin.addEventListener("keyup", () => {
+    onlyNumbers(confirmPin);
+});
+
+
+setPinBtn.addEventListener("click", () => {
+    if(setPin.value == confirmPin.value && (setPin.value.length === 4) && (confirmPin.value.length === 4)) {
+        pin = confirmPin.value;
+        setPin.value = confirmPin.value = '';
+        wrapper.style.display = "flex";
+        setPinDiv.style.display = "none";
+        alert("Pin set succesfully!");
+    }
+    else if(setPin.value != confirmPin.value || setPin.value.length < 4 || confirmPin.value.length < 4) {
+        alert("Please enter pin correctly");
+        setPin.value = confirmPin.value = '';
+    }
+});
+
 
 // To check balance
 checkBalanceBtn.addEventListener('click', () => {
@@ -28,7 +70,7 @@ checkBalanceBtn.addEventListener('click', () => {
 
     // Checking if pin is correct or not
     function pinCheck() {
-        if(userPin === setPin) {
+        if(userPin === parseInt(pin)) {
             correctPin = true;
         }
         else {
@@ -79,7 +121,7 @@ withdrawCashBtn.addEventListener('click', () => {
     let userPin = inputPin.value;
 
     // Checking if pin is correct or not
-    if(parseInt(userPin) === setPin) {
+    if(parseInt(userPin) === parseInt(pin)) {
         inputPin.value = '';
         amountInput.classList.add('show-amount');
         cashOut.classList.add('cashout-btn');

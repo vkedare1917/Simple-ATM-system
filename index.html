@@ -12,6 +12,12 @@
 <body>
 
     <div class="container">
+        <div class="set-pin-div">
+            <p>Pin Setup</p>
+            <input type="text" class="pin set-pin" placeholder="Set Pin" maxlength="4">
+            <input type="text" class="pin confirm-pin" placeholder="Confirm pin" maxlength="4">
+            <button class="btn set-pin-btn">Set Pin</button>
+        </div>
 
         <div class="wrapper">
 
@@ -19,7 +25,7 @@
 
             <div class="input-elements">
                 <label for="">Enter your pin</label>
-                <input id="input-pin" type="text" placeholder="For e.g. 1234" maxlength="4" onkeyup="onlyNumbers()">
+                <input id="input-pin" type="text" placeholder="For e.g. 1234" maxlength="4">
             </div>
 
             <div class="buttons">
@@ -27,7 +33,7 @@
                 <button id="withdraw-cash-btn" type="button">Withdraw Cash</button>
             </div>
 
-            <input type="text" class="amount-input" placeholder="Enter Your Ammount" onkeyup="onlyNumbers()">
+            <input type="text" class="amount-input" placeholder="Enter Your Ammount">
 
             <button class="hide cash-out">Cash Out</button>
 

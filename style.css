@@ -14,31 +14,66 @@ body {
     text-align: center;
 }
 
+/* Main Container */
 .container {
     display: flex;
     justify-content: center;
     align-items: center;
+    flex-direction: column;
     height: 100vh;
     width: 100%;
 }
 
-.wrapper {
+/* Pin-setup */
+.set-pin-div {
     display: flex;
-    width: 500px;
-    height: 500px;
     flex-direction: column;
-    border: 0.5px solid black;
+    width: 20%;
+    min-height: 40%;
+    background-color: #2da8d8ff;
+    border: none;
     border-radius: 10px;
+    box-shadow: 0 14px 28px rgba(0,0,0,0.25), 0 10px 10px rgba(0,0,0,0.22);
+}
+
+.set-pin-div p {
+    font-size: 1.6rem;
+    font-weight: 800;
+    margin-top: 22px;
+    color: #f4f4f4;
+}
+
+.set-pin-div .pin {
+    width: 70%;
+    margin: 15px auto;
+    height: 45px;
+}
+
+.set-pin-div .set-pin-btn {
+    width: 45%;
+    margin: 15px auto;
+}
+
+/* Main div */
+.wrapper {
+    display: none;
+    width: 390px;
+    height: 415px;
+    flex-direction: column;
+    border: none;
+    border-radius: 15px;
     align-items: center;
     background: #2da8d8ff;
     justify-content: center;
     transition: 0.3s all ease-in-out;
+    box-shadow: 0 14px 28px rgba(0,0,0,0.25), 0 10px 10px rgba(0,0,0,0.22);
 }
 
 #welcome {
     color: #fff;
     font-size: 1.5rem;
     margin-bottom: 0.5rem;
+    margin-top: 35px;
 }
 
 #display-message {
@@ -58,16 +93,17 @@ body {
     padding: 0.1em;
     margin: 0.1em;
     font-weight: bold;
-    font-size: 1.4em;
+    font-size: 1.3em;
 }
 
+/* Buttons */
 .buttons {
     display: flex;
     flex-direction: column;
 }
 
 #input-pin {
-    padding: 0.5em;
+    padding: 1em;
     margin: 1em;
 }
 
@@ -134,4 +170,35 @@ button:hover {
     font-weight: bold;
     font-size: 1.3em;
     color: #fff;
+}
+
+@media screen and (max-width: 768px) {
+    .set-pin-div {
+        width: 35%;
+    }
+}
+
+@media screen and (max-width: 400px) {
+    .wrapper {
+        width: 80%;
+        height: 335px;
+    }
+    .set-pin-div {
+        width: 70%;
+    }
+    .wrapper #welcome {
+        font-size: 1.3rem;
+    }
+    .input-elements label {
+        font-size: 1rem;
+    }
+    #display-message {
+        font-size: 1rem;
+    }
+    .btn-style {
+        font-size: 0.75rem;
+    }
+    #check-balance-btn,#withdraw-cash-btn {
+        font-size: 0.75rem;
+    }
 }
